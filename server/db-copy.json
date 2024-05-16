@@ -1,0 +1,40 @@
+{
+    "products" : [
+        {
+            "id": 1,
+            "product_name": "Mouse orochi v2",
+            "brand": "Razer",
+            "price": 50000
+        },
+        {
+            "id": 2,
+            "product_name": "Pintura blanca satinada",
+            "brand": "Behr",
+            "price": 60000
+        },
+        {
+            "id": 3,
+            "product_name": "Motherboard b650 wifi",
+            "brand": "MSI",
+            "price": 200000
+        },
+        {
+            "id": 4,
+            "product_name": "Estandar para headset",
+            "brand": "sin marca",
+            "price": 15000
+        },
+        {
+            "id": 5,
+            "product_name": "Brazo para monitor",
+            "brand": "sin marca",
+            "price": 30000
+        },
+        {
+            "id": 6,
+            "product_name": "Delta RGB 16X2 DDR5 6000mhz",
+            "brand": "Delta",
+            "price": 100000
+        }
+    ]
+}
