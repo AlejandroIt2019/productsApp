@@ -14,6 +14,6 @@ export const productsApp = async(elementId) => {
         const product = await saveProduct(likeProduct);
         console.log(product);
         productsStore.onChangeProduct(product);
-        renderTable();
+        renderTable(); 
     });
 }
