@@ -17,8 +17,13 @@ const prevPage = async() => {
     state.products = products;
     state.currentPage -= 1;
 }
-const onChangeUser = async() => {
-    throw('not implemented');
+const onChangeProduct = async(updateProducto) => {
+    state.products = state.products.map(item => {
+        if (item.id === updateProducto.id) {
+            return updateProducto;
+        }
+        return item;
+    })
 }
 const reloadPage = async() => {
     throw('not implemented');
@@ -27,7 +32,7 @@ export default {
     state,
     nextPage,
     prevPage,
-    onChangeUser,
+    onChangeProduct,
     reloadPage,
     /**
      * 

@@ -5,11 +5,13 @@ export const backendToModel = (localhost) => {
         product_name,
         brand,
         price,
+        acquired
     } = localhost
     return new Product({
         id,
         productName: product_name,
         brand,
         price,
+        acquired
     })
 }

@@ -1,4 +1,5 @@
 import productsStore from "../../store/products-store";
+import { showModal } from "../render-modal/render-modal";
 import "./render-table.css";
 let table;
 const createTable = () => {
@@ -35,14 +36,22 @@ export const renderTable = (elementId) => {
                 <td>${product.productName}</td>
                 <td>${product.brand}</td>
                 <td>${product.price}</td>
-                <td>undefinedd</td>
+                <td>${product.acquired}</td>
                 <td>
-                    <a href='#'>Selected</a>|
-                    <a href='#'>Delete</a>
+                    <a class='selected-user' data-id='${product.id}' href='#'>Selected</a> |
+                    <a class='delete-user' data-id='${product.id}' href='#'>Delete</a>
                 </td>
             </tr>
-        ` 
+        `
     });
     table.querySelector('tbody').innerHTML = html;
-
+    //events
+    const selectedUser = table.querySelectorAll('.selected-user');
+    selectedUser.forEach(element => {
+        element.addEventListener('click', e => {
+            const takeId = e.target.closest('[data-id]');
+            const id = takeId.getAttribute('data-id');
+            showModal(id);
+        })
+    });
 }
