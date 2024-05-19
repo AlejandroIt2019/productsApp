@@ -33,8 +33,6 @@ const reloadPage = async() => {
         return;
     }
     state.products = products;
-
-    
 }
 export default {
     state,

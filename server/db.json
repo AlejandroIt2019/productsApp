@@ -69,13 +69,6 @@
       "brand": "sin marca",
       "price": 30000,
       "acquired": false
-    },
-    {
-      "product_name": "new",
-      "brand": "product",
-      "price": 1,
-      "acquired": true,
-      "id": 11
     }
   ]
 }

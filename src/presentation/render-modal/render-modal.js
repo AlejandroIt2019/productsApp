@@ -1,8 +1,15 @@
 import modalHtml from "./render-modal.html?raw";
+import modalDeleteHtml from "./modal-delete.html?raw";
 import "./render-modal.css";
 import { getProductById } from "../../use-cases/get-product-by-id";
 let modal;
 let loadedProducts = {};
+let modalDelete;
+//modal delete
+export const showModalDelete = async(id) => {
+    modalDelete.classList.remove('hide-modal');
+}
+//modal form
 export const showModal = async(id) => {
     modal.classList.remove('hide-modal');
     if (!id) return;
@@ -16,6 +23,7 @@ export const showModal = async(id) => {
 }
 export const hideModal = () => {
     modal.classList.add('hide-modal');
+    modalDelete.classList.add('hide-modal');
     modal.querySelector('form').reset();
 }
 /** 
@@ -26,9 +34,19 @@ export const renderModal = (elementId, callback) => {
         modal = document.createElement('div');
         modal.innerHTML = modalHtml;
         elementId.append(modal);
+        //modal delete
+        modalDelete = document.createElement('div');
+        modalDelete.innerHTML = modalDeleteHtml;
+        elementId.append(modalDelete);
     }
+    modalDelete.className = 'hide-modal modal-container';
     modal.className = 'hide-modal modal-container';
     modal.addEventListener('click', e => {
+        if (e.target.className === 'modal-container') {
+            hideModal();
+        }
+    })
+    modalDelete.addEventListener('click', e => {
         if (e.target.className === 'modal-container') {
             hideModal();
         }

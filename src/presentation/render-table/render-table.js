@@ -1,6 +1,6 @@
 import productsStore from "../../store/products-store";
 import { deleteProductById } from "../../use-cases/delete-product";
-import { showModal } from "../render-modal/render-modal";
+import { hideModal, showModal, showModalDelete } from "../render-modal/render-modal";
 import "./render-table.css";
 let table;
 const createTable = () => {
@@ -43,26 +43,36 @@ export const renderTable = (elementId) => {
                     <a class='delete-product' data-id='${product.id}' href='#'>Delete</a>
                 </td>
             </tr>
-        `
-    });
-    table.querySelector('tbody').innerHTML = html;
-    //events
-    const selectedProduct = table.querySelectorAll('.selected-product');
-    selectedProduct.forEach(element => {
-        element.addEventListener('click', e => {
-            const takeId = e.target.closest('[data-id]');
-            const id = takeId.getAttribute('data-id');
-            showModal(id);
-        })
-    });
+            `
+        });
+        table.querySelector('tbody').innerHTML = html;
+        //events
+        const selectedProduct = table.querySelectorAll('.selected-product');
+        selectedProduct.forEach(element => {
+            element.addEventListener('click', e => {
+                const takeId = e.target.closest('[data-id]');
+                const id = takeId.getAttribute('data-id');
+                showModal(id);
+            })
+        });
     const deleteProduct = table.querySelectorAll('.delete-product');
+    const deleteButton = document.querySelector('.deleteP');
+    const cancelProduct = document.querySelector('.cancelP');
     deleteProduct.forEach(element => {
         element.addEventListener('click', async(e) => {
+            showModalDelete();
             const takeId = e.target.closest('[data-id]');
             const id = takeId.getAttribute('data-id');
-            deleteProductById(id);
-            await productsStore.reloadPage();
-            renderTable();
+            deleteButton.addEventListener('click', async(e) => {
+                deleteProductById(id);
+                await productsStore.reloadPage();
+                hideModal();
+                renderTable();
+            })
+            cancelProduct.addEventListener('click', e => {
+                hideModal();
+            })           
+            //late delete
         })
     });
 }
