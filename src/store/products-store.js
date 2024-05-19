@@ -1,4 +1,5 @@
 import { Product } from "../models/product";
+import { renderTable } from "../presentation/render-table/render-table";
 import { loadProducts } from "../use-cases/load-products";
 
 const state = {
@@ -13,7 +14,7 @@ const nextPage = async() => {
 }
 const prevPage = async() => {
     const products = await loadProducts(state.currentPage - 1);
-    if (state.products === 1) return;
+    if (state.currentPage === 1) return;
     state.products = products;
     state.currentPage -= 1;
 }
@@ -26,7 +27,14 @@ const onChangeProduct = async(updateProducto) => {
     })
 }
 const reloadPage = async() => {
-    throw('not implemented');
+    const products = await loadProducts(state.currentPage);
+    if (products.length === 0) {
+        await prevPage();
+        return;
+    }
+    state.products = products;
+
+    
 }
 export default {
     state,
@@ -35,7 +43,6 @@ export default {
     onChangeProduct,
     reloadPage,
     /**
-     * 
      * @returns {Product[]}
      */
     getProducts: () => state.products,

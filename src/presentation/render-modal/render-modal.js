@@ -2,7 +2,7 @@ import modalHtml from "./render-modal.html?raw";
 import "./render-modal.css";
 import { getProductById } from "../../use-cases/get-product-by-id";
 let modal;
-let loadedProducts;
+let loadedProducts = {};
 export const showModal = async(id) => {
     modal.classList.remove('hide-modal');
     if (!id) return;
@@ -50,7 +50,7 @@ export const renderModal = (elementId, callback) => {
                 likeProduct[key] = value === 'on' ? true : false;
                 continue;
             }
-            likeProduct[key] = value
+            likeProduct[key] = value;
         }
         callback(likeProduct);
         hideModal();

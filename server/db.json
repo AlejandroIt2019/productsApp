@@ -2,9 +2,9 @@
   "products": [
     {
       "id": 1,
-      "product_name": "Coffeee",
-      "brand": "Nesca",
-      "price": 20000,
+      "product_name": "Mouse V2",
+      "brand": "Razer",
+      "price": 50000,
       "acquired": true
     },
     {
@@ -37,16 +37,16 @@
     },
     {
       "id": 6,
-      "product_name": "Delta RGB 16X2 DDR5 6000mhz",
+      "product_name": "Delta Tuf RGB 16X2 DDR5 6000mhz",
       "brand": "Delta",
       "price": 100000,
       "acquired": false
     },
     {
       "id": 7,
-      "product_name": "x",
-      "brand": "Behr",
-      "price": 60000,
+      "product_name": "Budweiser",
+      "brand": "Budweiser",
+      "price": 2400,
       "acquired": false
     },
     {
@@ -71,67 +71,11 @@
       "acquired": false
     },
     {
-      "id": 11,
-      "product_name": "x",
-      "brand": "Delta",
-      "price": 100000,
-      "acquired": false
-    },
-    {
-      "product_name": "hola",
-      "brand": "it",
-      "price": "11",
-      "acquired": "on",
-      "id": 12
-    },
-    {
-      "product_name": "Dolbek Maqui",
-      "brand": "Dolbek",
-      "price": "3700",
-      "acquired": "on",
-      "id": 13
-    },
-    {
-      "product_name": "Puñahue",
-      "brand": "Puñahue",
-      "price": 1500,
-      "acquired": false,
-      "id": 14
-    },
-    {
-      "product_name": "Pipeta",
-      "brand": "NexGard",
-      "price": 18000,
-      "acquired": true,
-      "id": 15
-    },
-    {
-      "product_name": "omg",
-      "brand": "it",
-      "price": 10,
-      "acquired": true,
-      "id": 16
-    },
-    {
-      "product_name": "Water",
-      "brand": "Cachantun",
-      "price": 1000,
-      "acquired": true,
-      "id": 17
-    },
-    {
-      "product_name": "sad",
-      "brand": "q",
-      "price": 11,
-      "acquired": true,
-      "id": 18
-    },
-    {
-      "product_name": "wtf",
-      "brand": "a",
+      "product_name": "new",
+      "brand": "product",
       "price": 1,
       "acquired": true,
-      "id": 19
+      "id": 11
     }
   ]
 }

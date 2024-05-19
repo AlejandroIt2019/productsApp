@@ -1,4 +1,5 @@
 import productsStore from "../../store/products-store";
+import { deleteProductById } from "../../use-cases/delete-product";
 import { showModal } from "../render-modal/render-modal";
 import "./render-table.css";
 let table;
@@ -38,20 +39,30 @@ export const renderTable = (elementId) => {
                 <td>${product.price}</td>
                 <td>${product.acquired}</td>
                 <td>
-                    <a class='selected-user' data-id='${product.id}' href='#'>Selected</a> |
-                    <a class='delete-user' data-id='${product.id}' href='#'>Delete</a>
+                    <a class='selected-product' data-id='${product.id}' href='#'>Selected</a> |
+                    <a class='delete-product' data-id='${product.id}' href='#'>Delete</a>
                 </td>
             </tr>
         `
     });
     table.querySelector('tbody').innerHTML = html;
     //events
-    const selectedUser = table.querySelectorAll('.selected-user');
-    selectedUser.forEach(element => {
+    const selectedProduct = table.querySelectorAll('.selected-product');
+    selectedProduct.forEach(element => {
         element.addEventListener('click', e => {
             const takeId = e.target.closest('[data-id]');
             const id = takeId.getAttribute('data-id');
             showModal(id);
+        })
+    });
+    const deleteProduct = table.querySelectorAll('.delete-product');
+    deleteProduct.forEach(element => {
+        element.addEventListener('click', async(e) => {
+            const takeId = e.target.closest('[data-id]');
+            const id = takeId.getAttribute('data-id');
+            deleteProductById(id);
+            await productsStore.reloadPage();
+            renderTable();
         })
     });
 }

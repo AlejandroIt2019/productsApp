@@ -1,16 +1,17 @@
+import { backendToModel } from "../mappers/product-mapper";
 import { modelToBackend } from "../mappers/product-to-back";
 import { Product } from "../models/product";
-
-
 export const saveProduct = async(likeProduct) => {
     const newProduct = new Product(likeProduct);
     if (!newProduct.productName || !newProduct.brand) throw new Error('not implemented.');
     const backProduct = modelToBackend(newProduct);
+    let finalProduct;
     if (newProduct.id) {
-        return await updateProduct(backProduct);
+        finalProduct = await updateProduct(backProduct);
     } else {
-        return await createProduct(backProduct);
+        finalProduct = await createProduct(backProduct);
     }
+    return backendToModel(finalProduct);
 }
 const createProduct = async(product) => {
     const url = `${import.meta.env.VITE_BASE_URL}/products/`;
